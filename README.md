@@ -39,4 +39,4 @@ pip install udkanbun
 
 ## Author
 
-Koichi Yasuoka
+Koichi Yasuoka (安岡孝一)
