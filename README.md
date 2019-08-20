@@ -4,7 +4,7 @@
 
 Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts, working on [Universal Dependencies](https://universaldependencies.org/format.html).
 
-# Basic usage
+## Basic usage
 
 ```py
 >>> import udkanbun
@@ -29,7 +29,7 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts, workin
 `udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses MeCab for tokenizer and POS-tagger, then uses UDPipe for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
 
 
-# Installation
+## Installation
 
 Binary wheels are available for Linux, and are installed by default when you use `pip`:
 
@@ -37,6 +37,6 @@ Binary wheels are available for Linux, and are installed by default when you use
 pip install udkanbun
 ```
 
-# Author
+## Author
 
 Koichi Yasuoka
