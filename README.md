@@ -31,7 +31,7 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts, workin
 
 ## Installation
 
-Binary wheels are available for Linux, and are installed by default when you use `pip`:
+Binary wheel is available for Linux, and is installed by default when you use `pip`:
 
 ```sh
 pip install udkanbun
