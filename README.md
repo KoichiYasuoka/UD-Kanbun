@@ -26,7 +26,7 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 1 不 不 ADV v,副詞,否定,無界 Polarity=Neg 2 advmod _ Gloss=not|SpaceAfter=No
 ```
 
-`udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses MeCab for tokenizer and POS-tagger, then uses UDPipe for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
+`udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
 
 
 ## Installation

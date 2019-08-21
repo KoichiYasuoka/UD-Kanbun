@@ -27,7 +27,6 @@ setuptools.setup(
     "Topic :: Text Processing :: Linguistic",
   ],
   project_urls={
-    "UDPipe":"http://ufal.mff.cuni.cz/udpipe",
     "ud-kanbun":"https://corpus.kanji.zinbun.kyoto-u.ac.jp/gitlab/Kanbun/ud-kanbun",
     "Source":URL,
     "Tracker":URL+"/issues",
