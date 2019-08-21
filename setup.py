@@ -24,6 +24,8 @@ setuptools.setup(
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent",
+    "Natural Language :: Classical Chinese",
+    "Topic :: Text Processing :: Linguistic",
   ],
   project_urls={
     "UDPipe":"http://ufal.mff.cuni.cz/udpipe",
