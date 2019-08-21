@@ -2,7 +2,7 @@
 
 # UD-Kanbun
 
-Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文), working on [Universal Dependencies](https://universaldependencies.org/format.html).
+Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文/文言文), working on [Universal Dependencies](https://universaldependencies.org/format.html).
 
 ## Basic usage
 
