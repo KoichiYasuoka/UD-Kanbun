@@ -40,3 +40,7 @@ pip install udkanbun
 ## Author
 
 Koichi Yasuoka (安岡孝一)
+
+## References
+
+* 安岡孝一: 四書を学んだMeCab＋UDPipeはセンター試験の漢文を読めるのか, 東洋学へのコンピュータ利用, 第30回研究セミナー (2019年3月8日), pp.3-110.
