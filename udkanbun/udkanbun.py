@@ -68,7 +68,7 @@ class UDKanbun(object):
     else:
       self.mecab=False
       self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=presegmented","","","")
-  def __call__(self,sentence):
+  def __call__(self,sentence,raw=False):
     if self.mecab:
       u=""
       id=1
@@ -86,9 +86,12 @@ class UDKanbun(object):
             misc="SpaceAfter=No" if t[9]=="*" else "Gloss="+t[9]+"|SpaceAfter=No"
             u+="\t".join([str(id),s[0],lemma,t[7],t[0]+","+t[1]+","+t[2]+","+t[3],t[8].replace("*","_"),"_","_","_",misc])+"\n"
             id+=1
-      return UDPipeEntry(self.udpipe.process(u))
     else:
-      return UDPipeEntry(self.udpipe.process(sentence))
+      u=sentence
+    if raw:
+      return self.udpipe.process(u)
+    else:
+      return UDPipeEntry(self.udpipe.process(u))
 
 def load(MeCab=True):
   return UDKanbun(MeCab)
