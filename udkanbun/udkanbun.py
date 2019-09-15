@@ -55,6 +55,16 @@ class UDPipeEntry(object):
     return len(self._tokens)
   def index(self,item):
     return self._tokens.index(item)
+  def to_svg(self):
+    s='<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="100%" height="100%" onload="conllusvg.view(this,+conllu+)" onresize="conllusvg.rewrite(+conllu+)">\n'.replace("+","'")
+    s+='<text id="conllu" fill="none" visibility="hidden">\n'
+    s+=str(self)
+    s+='</text>\n<script type="text/javascript"><![CDATA[\n'
+    f=open(os.path.join(PACKAGE_DIR,"conllusvgview.js"),"r")
+    s+=f.read()
+    f.close()
+    s+=']]></script>\n</svg>\n'
+    return s
 
 class UDKanbun(object):
   def __init__(self,mecab):
