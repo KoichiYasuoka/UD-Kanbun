@@ -55,10 +55,18 @@ class UDPipeEntry(object):
     return len(self._tokens)
   def index(self,item):
     return self._tokens.index(item)
-  def to_svg(self):
+  def to_svg(self,item=0):
+    if not hasattr(self,"_tokens"):
+      return self._parent.to_svg(self._parent.index(self))
     s='<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  width="100%" height="100%" onload="conllusvg.view(this,+conllu+)" onresize="conllusvg.rewrite(+conllu+)">\n'.replace("+","'")
     s+='<text id="conllu" fill="none" visibility="hidden">\n'
-    s+=str(self)
+    if item==0:
+      s+=str(self)
+    else:
+      from itertools import takewhile
+      i=item-self[item].id
+      for j in takewhile(lambda j:j-self[j].id==i,range(i+1,len(self))):
+        s+=str(self[j])+'\n'
     s+='</text>\n<script type="text/javascript"><![CDATA[\n'
     f=open(os.path.join(PACKAGE_DIR,"conllusvgview.js"),"r")
     s+=f.read()
