@@ -50,3 +50,4 @@ Koichi Yasuoka (安岡孝一)
 ## References
 
 * 安岡孝一: 四書を学んだMeCab＋UDPipeはセンター試験の漢文を読めるのか, 東洋学へのコンピュータ利用, 第30回研究セミナー (2019年3月8日), pp.3-110.
+* Koichi Yasuoka: Universal Dependencies Treebank of the Four Books in Classical Chinese, DADH2019: 10th International Conference of Digital Archives and Digital Humanities (December 2019).
