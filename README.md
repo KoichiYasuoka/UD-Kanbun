@@ -53,6 +53,8 @@ sh -x ./install.sh /usr/local
 pip3 install udkanbun
 ```
 
+Use `python3.6` command in Cygwin64 instead of `python`.
+
 ## Author
 
 Koichi Yasuoka (安岡孝一)
