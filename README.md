@@ -43,7 +43,7 @@ Binary wheel is available for Linux, and is installed by default when you use `p
 pip install udkanbun
 ```
 
-For Cygwin64, first make sure to get `gcc-g++` `git` `python36-pip` `python3-devel` `swig` from [Cygwin64 distribution](https://www.cygwin.com/), and then:
+For installing in [Cygwin64](https://www.cygwin.com/install.html), make sure to get `gcc-g++` `git` `python36-pip` `python3-devel` `swig` packages, and then:
 
 ```sh
 cd /tmp
