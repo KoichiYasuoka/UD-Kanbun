@@ -35,13 +35,15 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 `udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
 
 
-## Installation
+## Installation for Linux
 
 Binary wheel is available for Linux, and is installed by default when you use `pip`:
 
 ```sh
 pip install udkanbun
 ```
+
+## Installation for Cygwin64
 
 For installing in [Cygwin64](https://www.cygwin.com/install.html), make sure to get `gcc-g++` `git` `python36-pip` `python3-devel` `swig` packages, and then:
 
