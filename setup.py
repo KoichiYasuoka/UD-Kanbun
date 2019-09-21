@@ -5,7 +5,7 @@ URL="https://github.com/KoichiYasuoka/UD-Kanbun"
 
 setuptools.setup(
   name="udkanbun",
-  version="1.0.2",
+  version="1.0.3",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
@@ -19,6 +19,9 @@ setuptools.setup(
   python_requires=">=3.6",
   package_data={
     "udkanbun":["./*.js","./ud-kanbun.udpipe","./mecab-kanbun/*"],
+  },
+  entry_points={
+    "console_scripts":["udkanbun=cli:main"],
   },
   classifiers=[
     "License :: OSI Approved :: MIT License",
