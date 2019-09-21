@@ -52,7 +52,7 @@ cd /tmp
 git clone https://github.com/KoichiYasuoka/mecab-cygwin64.git
 cd mecab-cygwin64
 sh -x ./install.sh /usr/local
-pip3 install udkanbun
+pip3.7 install udkanbun
 ```
 
 Use `python3.7` command in Cygwin64 instead of `python`.

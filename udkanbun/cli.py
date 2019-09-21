@@ -3,7 +3,7 @@ from udkanbun import UDKanbun
 
 def main():
   if len(sys.argv)<2:
-    lzh=UDKanbun(mecab=True)
+    lzh=UDKanbun(True)
     while True:
       try:
         s=input()
@@ -14,7 +14,7 @@ def main():
     f=open(sys.argv[1],"r")
     s=f.read()
     f.close()
-    lzh=UDKanbun(mecab=True)
+    lzh=UDKanbun(True)
     print(lzh(s,raw=True),end="")
 
 if __name__=="__main__":
