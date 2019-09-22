@@ -11,7 +11,7 @@ def main():
         return
       print(lzh(s,raw=True),end="")
   else:
-    f=open(sys.argv[1],"r")
+    f=open(sys.argv[1],"r",encoding="utf-8")
     s=f.read()
     f.close()
     lzh=UDKanbun(True)
