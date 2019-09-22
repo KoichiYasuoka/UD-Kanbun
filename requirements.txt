@@ -1,2 +1,0 @@
-ufal.udpipe>=1.2.0
-mecab-python3>=0.996
