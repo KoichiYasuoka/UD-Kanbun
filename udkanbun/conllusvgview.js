@@ -1,4 +1,4 @@
-// CoNLL-U SVG Viewer by Koichi Yasuoka, July 4, 2019.
+// CoNLL-U SVG Viewer by Koichi Yasuoka, October 1, 2019.
 // Nos. 1, 2, 4, 5, 7, 8 and 10 columns are used.
 "use strict";
 var conllusvg=new Object();
@@ -500,6 +500,8 @@ conllusvg.writeNodesSVG=function(textid){
       t.setAttribute("font-family","sans-serif");
       t.setAttribute("font-size",30);
       t.setAttribute("stroke","none");
+      if(c.nodes[n].misc.indexOf("FontStyle=Italic")>=0)
+	t.setAttribute("font-style","oblique");
       g.appendChild(t);
       w=t.getBBox().width;
       if(w>90){
