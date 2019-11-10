@@ -34,6 +34,11 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 
 `udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
 
+You can simply use `udkanbun` on the command line:
+
+```sh
+echo 不入虎穴不得虎子 | udkanbun
+```
 
 ## Installation for Linux
 
