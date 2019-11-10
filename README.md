@@ -29,13 +29,11 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 >>> f.write(s.to_svg())
 >>> f.close()
 ```
-
 ![trial.svg](https://raw.githubusercontent.com/KoichiYasuoka/UD-Kanbun/master/trial.png)
 
 `udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
 
 You can simply use `udkanbun` on the command line:
-
 ```sh
 echo 不入虎穴不得虎子 | udkanbun
 ```
@@ -43,7 +41,6 @@ echo 不入虎穴不得虎子 | udkanbun
 ## Installation for Linux
 
 Binary wheel is available for Linux, and is installed by default when you use `pip`:
-
 ```sh
 pip install udkanbun
 ```
@@ -51,12 +48,10 @@ pip install udkanbun
 ## Installation for Cygwin64
 
 For installing in [Cygwin64](https://www.cygwin.com/install.html), make sure to get `gcc-g++` `git` `python37-pip` `python37-devel` `swig` packages, and then:
-
 ```sh
 pip3.7 install git+https://github.com/KoichiYasuoka/mecab-cygwin64
 pip3.7 install udkanbun
 ```
-
 Use `python3.7` command in Cygwin64 instead of `python`. For installing in old Cygwin (32-bit), try to use [mecab-cygwin32](https://github.com/KoichiYasuoka/mecab-cygwin32) instead of [mecab-cygwin64](https://github.com/KoichiYasuoka/mecab-cygwin64).
 
 ## Author
