@@ -25,6 +25,16 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 >>> print(t.id,t.form,t.lemma,t.upos,t.xpos,t.feats,t.head.id,t.deprel,t.deps,t.misc)
 1 不 不 ADV v,副詞,否定,無界 Polarity=Neg 2 advmod _ Gloss=not|SpaceAfter=No
 
+>>> print(s.to_tree())
+不 <┐     advmod
+入 ─┴─┬─┐ root
+虎 <┐ │ │ nmod
+穴 ─┘<┘ │ obj
+不 <┐   │ advmod
+得 ─┴─┐<┘ parataxis
+虎 <┐ │   nmod
+子 ─┘<┘   obj
+
 >>> f=open("trial.svg","w")
 >>> f.write(s.to_svg())
 >>> f.close()

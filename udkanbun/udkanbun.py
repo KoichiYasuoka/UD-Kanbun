@@ -73,6 +73,78 @@ class UDPipeEntry(object):
     f.close()
     s+=']]></script>\n</svg>\n'
     return s
+  def to_tree(self,BoxDrawingWidth=1):
+    if not hasattr(self,"_tokens"):
+      return None
+    f=[[] for i in range(len(self))]
+    h=[0]
+    for i in range(1,len(self)):
+      if self[i].deprel=="root":
+        h.append(0)
+        continue
+      j=i+self[i].head.id-self[i].id
+      f[j].append(i)
+      h.append(j) 
+    d=[1 if f[i]==[] and abs(h[i]-i)==1 else -1 if h[i]==0 else 0 for i in range(len(self))]
+    while 0 in d:
+      for i,e in enumerate(d):
+        if e!=0:
+          continue
+        g=[d[j] for j in f[i]]
+        if 0 in g:
+          continue
+        k=h[i]
+        if 0 in [d[j] for j in range(min(i,k)+1,max(i,k))]:
+          continue
+        for j in range(min(i,k)+1,max(i,k)):
+          if j in f[i]:
+            continue
+          g.append(d[j]-1 if j in f[k] else d[j])
+        g.append(0)
+        d[i]=max(g)+1
+#    for i,e in enumerate(f):
+#      g=[d[j] for j in e if i>j]
+#      if len(g)>1:
+#        g=max(g)
+#        for j in e:
+#          if i>j:
+#            d[j]=g
+#      g=[d[j] for j in e if i<j]
+#      if len(g)>1:
+#        g=max(g)
+#        for j in e:
+#          if i<j:
+#            d[j]=g
+    m=max(d)
+    p=[[0]*(m*2) for i in range(len(self))]
+    for i in range(1,len(self)):
+      k=h[i]
+      if k==0:
+        continue
+      j=d[i]*2-1
+      p[min(i,k)][j]|=9
+      p[max(i,k)][j]|=5
+      for l in range(j):
+        p[k][l]|=3
+      for l in range(min(i,k)+1,max(i,k)):
+        p[l][j]|=12
+    k=max(len(t.form) for t in self)
+    u=[" ","\u2574","\u2576","\u2500","\u2575","\u2518","\u2514","\u2534","\u2577","\u2510","\u250C","\u252C","\u2502","\u2524","\u251C","\u253C","<"]
+    s=""
+    for i in range(1,len(self)):
+      if h[i]>0:
+        j=d[i]*2-2
+        while j>=0:
+          if p[i][j]>0:
+            break
+          p[i][j]|=3
+          j-=1
+        p[i][j+1]=16
+      t="".join(u[j] for j in p[i])
+      if BoxDrawingWidth>1:
+        t=t.replace(" "," "*BoxDrawingWidth).replace("<"," "*(BoxDrawingWidth-1)+"<")
+      s+="  "*(k-len(self[i].form))+self[i].form+" "+t+" "+self[i].deprel+"\n"
+    return s
 
 class UDKanbun(object):
   def __init__(self,mecab):
