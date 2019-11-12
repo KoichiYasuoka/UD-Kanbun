@@ -65,6 +65,12 @@ pip3.7 install udkanbun
 ```
 Use `python3.7` command in Cygwin64 instead of `python`. For installing in old Cygwin (32-bit), try to use [mecab-cygwin32](https://github.com/KoichiYasuoka/mecab-cygwin32) instead of [mecab-cygwin64](https://github.com/KoichiYasuoka/mecab-cygwin64).
 
+## Installation for Jupyter Notebook (Google Colaboratory)
+
+```py
+!pip install udkanbun
+```
+
 ## Author
 
 Koichi Yasuoka (安岡孝一)
