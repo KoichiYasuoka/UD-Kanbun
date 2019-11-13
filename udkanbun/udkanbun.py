@@ -55,10 +55,6 @@ class UDPipeEntry(object):
     return len(self._tokens)
   def index(self,item):
     return self._tokens.index(item)
-  def kaeriten(self):
-    import udkanbun.kaeriten
-    k=udkanbun.kaeriten.kaeriten(self)
-    return "".join(self[i].form+k[i] for i in range(1,len(self)))
   def to_svg(self,item=0):
     if not hasattr(self,"_tokens"):
       return self._parent.to_svg(self._parent.index(self))
@@ -77,6 +73,13 @@ class UDPipeEntry(object):
     f.close()
     s+=']]></script>\n</svg>\n'
     return s
+
+class UDKanbunEntry(UDPipeEntry):
+  def kaeriten(self):
+    import udkanbun.kaeriten
+    k=udkanbun.kaeriten.kaeriten(self)
+    s="".join("\n"+self[i].form+k[i] if self[i].id==1 else self[i].form+k[i] for i in range(1,len(self))).strip()
+    return s+"\n"
   def to_tree(self,BoxDrawingWidth=1):
     if not hasattr(self,"_tokens"):
       return None
@@ -178,7 +181,7 @@ class UDKanbun(object):
     if raw:
       return self.udpipe.process(u)
     else:
-      return UDPipeEntry(self.udpipe.process(u))
+      return UDKanbunEntry(self.udpipe.process(u))
 
 def load(MeCab=True):
   return UDKanbun(MeCab)
