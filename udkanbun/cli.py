@@ -4,7 +4,7 @@ from udkanbun import UDKanbun
 def main():
   argc=len(sys.argv)
   i=1
-  optu=optt=False
+  optu=optt=optk=False
   while i<argc:
     o=sys.argv[i]
     if o=="-h" or o=="--help" or o=="-v" or o=="--version":
@@ -17,6 +17,8 @@ def main():
     elif o=="-t2":
       optt=True
       w=2
+    elif o=="-k":
+      optk=True
     else:
       break
     i+=1
@@ -29,6 +31,8 @@ def main():
         return
       if optt==True:
         print(lzh(s).to_tree(w),end="")
+      elif optk==True:
+        print(lzh(s).kaeriten())
       else:
         print(lzh(s,raw=True),end="")
   lzh=UDKanbun(True)
@@ -38,6 +42,8 @@ def main():
     f.close()
     if optt==True:
       print(lzh(s).to_tree(w),end="")
+    elif optk==True:
+      print(lzh(s).kaeriten())
     else:
       print(lzh(s,raw=True),end="")
     i+=1
@@ -45,7 +51,11 @@ def main():
 def usage():
   from pkg_resources import get_distribution
   print("UD-Kanbun Version "+get_distribution("udkanbun").version,file=sys.stderr)
-  print("Usage: udkanbun [-u|-t|-t2] file",file=sys.stderr)
+  print("Usage: udkanbun [-u|-t|-t2|-k] file",file=sys.stderr)
+  print("  output format:",file=sys.stderr)
+  print("    -u  Universal Dependencies CoNLL-U",file=sys.stderr)
+  print("    -t  tree (optional BoxDrawingWidth)",file=sys.stderr)
+  print("    -k  kaeriten",file=sys.stderr)
   sys.exit()
 
 if __name__=="__main__":

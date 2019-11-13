@@ -55,6 +55,10 @@ class UDPipeEntry(object):
     return len(self._tokens)
   def index(self,item):
     return self._tokens.index(item)
+  def kaeriten(self):
+    import udkanbun.kaeriten
+    k=udkanbun.kaeriten.kaeriten(self)
+    return "".join(self[i].form+k[i] for i in range(1,len(self)))
   def to_svg(self,item=0):
     if not hasattr(self,"_tokens"):
       return self._parent.to_svg(self._parent.index(self))
