@@ -3,7 +3,7 @@ from udkanbun import UDKanbun
 
 def main():
   argc=len(sys.argv)
-  i=1
+  i=w=1
   optu=optt=optk=False
   while i<argc:
     o=sys.argv[i]
@@ -29,18 +29,18 @@ def main():
         s=input()
       except:
         return
-      print(output(lzh,optu,optt,optk,s),end="")
+      print(output(lzh,optu,optt,optk,w,s),end="")
   lzh=UDKanbun(True)
   while i<argc:
     f=open(sys.argv[i],"r",encoding="utf-8")
     s=f.read()
     f.close()
-    print(output(lzh,optu,optt,optk,s),end="")
+    print(output(lzh,optu,optt,optk,w,s),end="")
     i+=1
 
-def output(lzh,optu,optt,optk,sentence):
+def output(lzh,optu,optt,optk,width,sentence):
   if optt==True:
-    return lzh(sentence).to_tree(BoxDrawingWidth=w,kaeriten=optk)
+    return lzh(sentence).to_tree(BoxDrawingWidth=width,kaeriten=optk)
   if optu==True:
     if optk==False:
       return(lzh(sentence,raw=True))
