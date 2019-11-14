@@ -44,18 +44,17 @@ def output(lzh,optu,optt,optk,width,sentence):
   if optu==True:
     if optk==False:
       return(lzh(sentence,raw=True))
-    from udkanbun.kaeriten import kaeriten
     t=lzh(sentence)
-    k=kaeriten(t).split("\n")
+    k=t.kaeriten().split("\n")
     s=""
-    for i,r in enumerate(t.split("\n\n")):
+    for i,r in enumerate(str(t).split("\n\n")):
       if r=="":
         continue
       for u in r.split("\n"):
         if u=="":
           continue
         s+=u+"\n"
-        if s.startswith("# text = "):
+        if u.startswith("# text = "):
           s+="# text_with_kaeriten = "+k[i]+"\n"
       s+="\n"
     return s
