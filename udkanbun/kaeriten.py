@@ -152,7 +152,9 @@ def kaeriten(ud):
     if t[i]!=[]:
       continue
     j=h[i]
-    t[j].remove((i,7))
+    x=[(a,b) for a,b in t[j] if a==i and b==7]
+    if x!=[]:
+      t[j].remove((i,7))
 # rule 20
   for i in range(1,w):
     if ud[i].form!="敢":
