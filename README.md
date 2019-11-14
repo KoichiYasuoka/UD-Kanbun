@@ -44,7 +44,8 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 ![trial.svg](https://raw.githubusercontent.com/KoichiYasuoka/UD-Kanbun/master/trial.png)
 
 `udkanbun.load()` has only one option `udkanbun.load(MeCab=False)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing.
-`to_tree()` has an option `to_tree(BoxDrawingWidth=2)` for old terminals, whose Box Drawing characters are "fullwidth".
+
+`udkanbun.UDKanbunEntry.to_tree()` has an option `to_tree(BoxDrawingWidth=2)` for old terminals, whose Box Drawing characters are "fullwidth".
 
 You can simply use `udkanbun` on the command line:
 ```sh
