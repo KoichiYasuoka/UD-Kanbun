@@ -29,24 +29,39 @@ def main():
         s=input()
       except:
         return
-      if optt==True:
-        print(lzh(s).to_tree(w),end="")
-      elif optk==True:
-        print(lzh(s).kaeriten())
-      else:
-        print(lzh(s,raw=True),end="")
+      print(output(lzh,optu,optt,optk,s),end="")
   lzh=UDKanbun(True)
   while i<argc:
     f=open(sys.argv[i],"r",encoding="utf-8")
     s=f.read()
     f.close()
-    if optt==True:
-      print(lzh(s).to_tree(w),end="")
-    elif optk==True:
-      print(lzh(s).kaeriten())
-    else:
-      print(lzh(s,raw=True),end="")
+    print(output(lzh,optu,optt,optk,s),end="")
     i+=1
+
+def output(lzh,optu,optt,optk,sentence):
+  if optt==True:
+    return lzh(sentence).to_tree(BoxDrawingWidth=w,kaeriten=optk)
+  if optu==True:
+    if optk==False:
+      return(lzh(sentence,raw=True))
+    from udkanbun.kaeriten import kaeriten
+    t=lzh(sentence)
+    k=kaeriten(t).split("\n")
+    s=""
+    for i,r in enumerate(t.split("\n\n")):
+      if r=="":
+        continue
+      for u in r.split("\n"):
+        if u=="":
+          continue
+        s+=u+"\n"
+        if s.startswith("# text = "):
+          s+="# text_with_kaeriten = "+k[i]+"\n"
+      s+="\n"
+    return s
+  if optk==True:
+    return(lzh(sentence).kaeriten())
+  return(lzh(sentence,raw=True))
 
 def usage():
   from pkg_resources import get_distribution

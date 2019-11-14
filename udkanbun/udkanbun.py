@@ -80,7 +80,7 @@ class UDKanbunEntry(UDPipeEntry):
     k=udkanbun.kaeriten.kaeriten(self)
     s="".join("\n"+self[i].form+k[i] if self[i].id==1 else self[i].form+k[i] for i in range(1,len(self))).strip()
     return s+"\n"
-  def to_tree(self,BoxDrawingWidth=1):
+  def to_tree(self,BoxDrawingWidth=1,kaeriten=False):
     if not hasattr(self,"_tokens"):
       return None
     f=[[] for i in range(len(self))]
@@ -122,6 +122,11 @@ class UDKanbunEntry(UDPipeEntry):
         p[k][l]|=3
       for l in range(min(i,k)+1,max(i,k)):
         p[l][j]|=12
+    if kaeriten:
+      import udkanbun.kaeriten
+      k=udkanbun.kaeriten.kaeriten(self)
+    else:
+      k=[[]]*len(self)
     u=[" ","\u2574","\u2576","\u2500","\u2575","\u2518","\u2514","\u2534","\u2577","\u2510","\u250C","\u252C","\u2502","\u2524","\u251C","\u253C","<"]
     s=""
     for i in range(1,len(self)):
@@ -138,11 +143,13 @@ class UDKanbunEntry(UDPipeEntry):
       if BoxDrawingWidth>1:
         t=t.replace(" "," "*BoxDrawingWidth).replace("<"," "*(BoxDrawingWidth-1)+"<")
       s+=w+" "+t+" "+self[i].deprel+"\n"
-      if len(self[i].form)>1:
+      if len(self[i].form)>1 or k[i]!=[]:
         t="".join(u[((j&8)>>1)*3] for j in p[i])
         if BoxDrawingWidth>1:
           t=t.replace(" "," "*BoxDrawingWidth)
         for w in self[i].form[1:]:
+          s+=(w+" "+t).rstrip()+"\n"
+        for w in k[i]:
           s+=(w+" "+t).rstrip()+"\n"
     return s
 
