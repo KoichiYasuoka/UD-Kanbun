@@ -214,7 +214,7 @@ def kaeriten(ud):
 # レ点
   k=[]
   for i in range(w-1):
-    if t[i+1]==[i]:
+    if t[i+1]==[i] and len(ud[i+1].form)==1:
       k.append("\u3191")
       t[i+1]=[]
     else:
