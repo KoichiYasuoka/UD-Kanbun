@@ -225,11 +225,14 @@ def kaeriten(ud):
   for i in reversed(range(1,w)):
     if t[i]==[]:
       continue
+    x=[j for j in range(i+1,s[i]) if t[j]==[i]]
+    if x!=[]:
+      continue
     x=i
     n=1
     while t[x]!=[]:
       y=t[x][0]
-      x=[s for s in range(y+1,x) if t[s]!=[]]
+      x=[j for j in range(y+1,x) if t[j]!=[]]
       if x!=[]:
         n=0
         break
@@ -251,11 +254,14 @@ def kaeriten(ud):
   for i in reversed(range(1,w)):
     if t[i]==[]:
       continue
+    x=[j for j in range(i+1,s[i]) if t[j]==[i]]
+    if x!=[]:
+      continue
     x=i
     n=1
     while t[x]!=[]:
       y=t[x][0]
-      x=[s for s in range(y+1,x) if t[s]!=[]]
+      x=[j for j in range(y+1,x) if t[j]!=[]]
       if x!=[]:
         n=0
         break
@@ -277,11 +283,14 @@ def kaeriten(ud):
   for i in reversed(range(1,w)):
     if t[i]==[]:
       continue
+    x=[j for j in range(i+1,s[i]) if t[j]==[i]]
+    if x!=[]:
+      continue
     x=i
     n=1
     while t[x]!=[]:
       y=t[x][0]
-      x=[s for s in range(y+1,x) if t[s]!=[]]
+      x=[j for j in range(y+1,x) if t[j]!=[]]
       if x!=[]:
         n=0
         break
@@ -307,7 +316,7 @@ def kaeriten(ud):
     n=1
     while t[x]!=[]:
       y=t[x][0]
-      x=[s for s in range(y+1,x) if t[s]!=[]]
+      x=[j for j in range(y+1,x) if t[j]!=[]]
       if x!=[]:
         n=0
         break
