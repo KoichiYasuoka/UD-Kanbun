@@ -68,7 +68,7 @@ def usage():
   print("Usage: udkanbun [-u|-t|-t2|-k] file",file=sys.stderr)
   print("  output format:",file=sys.stderr)
   print("    -u  Universal Dependencies CoNLL-U",file=sys.stderr)
-  print("    -t  tree (optional BoxDrawingWidth)",file=sys.stderr)
+  print("    -t  tree  (-t2  tree with BoxDrawingWidth=2)",file=sys.stderr)
   print("    -k  kaeriten",file=sys.stderr)
   sys.exit()
 
