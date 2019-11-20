@@ -211,7 +211,7 @@ def kaeriten(ud,matrix=False):
       if j<m:
         t[m].append(j)
     t[i]=[m]
-  if matrix=True:
+  if matrix:
     return t
 # レ点
   k=[]
