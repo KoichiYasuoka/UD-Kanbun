@@ -1,4 +1,4 @@
-def kaeriten(ud):
+def kaeriten(ud,matrix=False):
   w=len(ud)
   t=[[] for i in range(w)]
   h=[i+t.head.id-t.id for i,t in enumerate(ud)]
@@ -211,6 +211,8 @@ def kaeriten(ud):
       if j<m:
         t[m].append(j)
     t[i]=[m]
+  if matrix=True:
+    return t
 # レ点
   k=[]
   for i in range(w-1):
