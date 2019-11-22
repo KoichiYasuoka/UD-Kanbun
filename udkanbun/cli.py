@@ -43,7 +43,7 @@ def output(lzh,optu,optt,optk,width,sentence):
     return lzh(sentence).to_tree(BoxDrawingWidth=width,kaeriten=optk,Japanese=optk)
   if optu==True:
     if optk==False:
-      return(lzh(sentence,raw=True))
+      return lzh(sentence,raw=True)
     t=lzh(sentence)
     k=t.kaeriten().split("\n")
     s=""
@@ -59,8 +59,8 @@ def output(lzh,optu,optt,optk,width,sentence):
       s+="\n"
     return s
   if optk==True:
-    return(lzh(sentence).kaeriten())
-  return(lzh(sentence,raw=True))
+    return lzh(sentence).kaeriten()
+  return lzh(sentence,raw=True)
 
 def usage():
   from pkg_resources import get_distribution
