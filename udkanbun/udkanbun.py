@@ -148,7 +148,7 @@ class UDKanbunEntry(UDPipeEntry):
       if BoxDrawingWidth>1:
         t=t.replace(" "," "*BoxDrawingWidth).replace("<"," "*(BoxDrawingWidth-1)+"<")
       if self[i].deprel in r:
-        s+=w+" "+t+" "+r[self[i].deprel]+"\n"
+        s+=w+" "+t+" "+self[i].deprel+"("+r[self[i].deprel]+")\n"
       else:
         s+=w+" "+t+" "+self[i].deprel+"\n"
       if len(self[i].form)>1 or k[i]!=[]:
