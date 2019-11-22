@@ -80,7 +80,7 @@ class UDKanbunEntry(UDPipeEntry):
     k=udkanbun.kaeriten.kaeriten(self)
     s="".join("\n"+self[i].form+k[i] if self[i].id==1 else self[i].form+k[i] for i in range(1,len(self))).strip()
     return s+"\n"
-  def to_tree(self,BoxDrawingWidth=1,kaeriten=False):
+  def to_tree(self,BoxDrawingWidth=1,kaeriten=False,Japanese=False):
     if not hasattr(self,"_tokens"):
       return None
     f=[[] for i in range(len(self))]
@@ -128,6 +128,11 @@ class UDKanbunEntry(UDPipeEntry):
     else:
       k=[[]]*len(self)
     u=[" ","\u2574","\u2576","\u2500","\u2575","\u2518","\u2514","\u2534","\u2577","\u2510","\u250C","\u252C","\u2502","\u2524","\u251C","\u253C","<"]
+    if Japanese:
+      import udkanbun.deprelja
+      r=udkanbun.deprelja.deprelja
+    else:
+      r={}
     s=""
     for i in range(1,len(self)):
       if h[i]>0:
@@ -142,7 +147,10 @@ class UDKanbunEntry(UDPipeEntry):
       t="".join(u[j] for j in p[i])
       if BoxDrawingWidth>1:
         t=t.replace(" "," "*BoxDrawingWidth).replace("<"," "*(BoxDrawingWidth-1)+"<")
-      s+=w+" "+t+" "+self[i].deprel+"\n"
+      if self[i].deprel in r:
+        s+=w+" "+t+" "+r[self[i].deprel]+"\n"
+      else:
+        s+=w+" "+t+" "+self[i].deprel+"\n"
       if len(self[i].form)>1 or k[i]!=[]:
         t="".join(u[((j&8)>>1)*3] for j in p[i])
         if BoxDrawingWidth>1:

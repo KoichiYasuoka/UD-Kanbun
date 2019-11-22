@@ -40,7 +40,7 @@ def main():
 
 def output(lzh,optu,optt,optk,width,sentence):
   if optt==True:
-    return lzh(sentence).to_tree(BoxDrawingWidth=width,kaeriten=optk)
+    return lzh(sentence).to_tree(BoxDrawingWidth=width,kaeriten=optk,Japanese=optk)
   if optu==True:
     if optk==False:
       return(lzh(sentence,raw=True))
