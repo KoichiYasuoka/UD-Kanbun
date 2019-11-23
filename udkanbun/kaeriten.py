@@ -160,7 +160,7 @@ def kaeriten(ud,matrix=False):
       t[j].remove((i,7))
 # rule 20
   for i in range(1,w):
-    if ud[i].form!="敢":
+    if ud[i].form!="敢" and ud[i].form!="肯":
       continue
     j=h[i]
     x=[(a,b) for a,b in t[j] if a==i and b==7]
