@@ -92,19 +92,22 @@ def kaeriten(ud,matrix=False):
       t[i]=[]
 # rule 14
   for i in range(1,w):
-    if ud[i].form=="如" or ud[i].form=="若" or ud[i].form=="奈":
-      x=[ud[j].deprel for j in range(i-ud[i].id+1,s[i]) if h[j]==i]
-      if "obj" in x or "expl" in x:
-        for k in reversed(range(i+1,s[i])):
-          x=[(a,b) for a,b in t[k] if a==i and b==4]
-          if x!=[]:
-            t[k]=[]
+    if ud[i].deprel!="xcomp" and ud[i].deprel!="ccomp":
+      continue
+    for a,b in t[i]:
+      f=ud[a].lemma
+      if b==4 and (f=="如" or f=="若" or f=="奈"):
+        x=[ud[j].deprel for j in range(i-ud[i].id+1,s[i]) if h[j]==a]
+        if "obj" in x or "expl" in x:
+          t[i]=t[a]
+          t[a]=[]
+        break
 # rule 15
   for i in reversed(range(1,w)):
     if ud[i].deprel!="xcomp":
       continue
     for a,b in t[i]:
-      if b==4 and ud[a].form=="助":
+      if b==4 and ud[a].lemma=="助":
         t[i]=t[a]
         t[a]=[]
         break
