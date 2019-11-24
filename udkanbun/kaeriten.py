@@ -214,6 +214,18 @@ def kaeriten(ud,matrix=False):
       if j<m:
         t[m].append(j)
     t[i]=[m]
+# 交差チェック
+  for i in reversed(range(1,w)):
+    if t[i]==[]:
+      continue
+    j=t[i][0]
+    for k in range(j+1,i):
+      if t[k]!=[]:
+        if t[k][0]<j:
+          break
+    else:
+      continue
+    t[i]=[]
   if matrix:
     return t
 # レ点

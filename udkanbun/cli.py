@@ -41,8 +41,10 @@ def main():
 def output(lzh,optu,optt,optk,width,sentence):
   if optt==True:
     return lzh(sentence).to_tree(BoxDrawingWidth=width,kaeriten=optk,Japanese=optk)
-  if optu==True:
-    if optk==False:
+  if optu:
+    if optt:
+      return lzh(sentence).to_svg()
+    if not optk:
       return lzh(sentence,raw=True)
     t=lzh(sentence)
     k=t.kaeriten().split("\n")
@@ -58,7 +60,7 @@ def output(lzh,optu,optt,optk,width,sentence):
           s+="# text_with_kaeriten = "+k[i]+"\n"
       s+="\n"
     return s
-  if optk==True:
+  if optk:
     return lzh(sentence).kaeriten()
   return lzh(sentence,raw=True)
 
