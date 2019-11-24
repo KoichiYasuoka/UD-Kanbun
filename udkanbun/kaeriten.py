@@ -99,7 +99,8 @@ def kaeriten(ud,matrix=False):
       if b==4 and (f=="如" or f=="若" or f=="奈"):
         x=[ud[j].deprel for j in range(i-ud[i].id+1,s[i]) if h[j]==a]
         if "obj" in x or "expl" in x:
-          t[i]=t[a]
+          t[i].remove((a,4))
+          t[i].extend(t[a])
           t[a]=[]
         break
 # rule 15
@@ -108,7 +109,8 @@ def kaeriten(ud,matrix=False):
       continue
     for a,b in t[i]:
       if b==4 and ud[a].lemma=="助":
-        t[i]=t[a]
+        t[i].remove((a,4))
+        t[i].extend(t[a])
         t[a]=[]
         break
 # rule 16
@@ -117,7 +119,8 @@ def kaeriten(ud,matrix=False):
       continue
     for a,b in t[i]:
       if b==4 and ud[a].lemma=="勸":
-        t[i]=t[a]
+        t[i].remove((a,4))
+        t[i].extend(t[a])
         t[a]=[]
         break
 # rule 17
