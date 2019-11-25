@@ -144,6 +144,7 @@ class UDKanbunEntry(UDPipeEntry):
           j-=1
         p[i][j+1]=16
       w=self[i].form[0]
+      w="  " if w=="_" else w
       t="".join(u[j] for j in p[i])
       if BoxDrawingWidth>1:
         t=t.replace(" "," "*BoxDrawingWidth).replace("<"," "*(BoxDrawingWidth-1)+"<")
