@@ -195,6 +195,14 @@ def kaeriten(ud,matrix=False):
     if d=="conj" or d=="clf" or d=="flat" or d=="case":
       t[i].extend(t[j])
       t[j]=[]
+  for i in reversed(range(1,w)):
+    j=h[i]
+    if j>i:
+      continue
+    d=ud[i].deprel
+    if d=="conj" or d=="clf" or d=="flat" or d=="case":
+      t[i].extend(t[j])
+      t[j]=[]
 # rule 23
   p=[]
   for i in range(w):
