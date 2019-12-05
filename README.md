@@ -78,7 +78,7 @@ Koichi Yasuoka (安岡孝一)
 
 ## References
 
-* Koichi Yasuoka: [Universal Dependencies Treebank of the Four Books in Classical Chinese](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/2019-12-04.pdf), DADH2019: 10th International Conference of Digital Archives and Digital Humanities (December 2019).
+* Koichi Yasuoka: [Universal Dependencies Treebank of the Four Books in Classical Chinese](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/DADH2019.pdf), DADH2019: 10th International Conference of Digital Archives and Digital Humanities (December 2019), pp.20-28.
 * 安岡孝一: [四書を学んだMeCab＋UDPipeはセンター試験の漢文を読めるのか](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/2019-03-08.pdf), 東洋学へのコンピュータ利用, 第30回研究セミナー (2019年3月8日), pp.3-110.
 * 安岡孝一: [漢文の依存文法解析と返り点の関係について](http://kanji.zinbun.kyoto-u.ac.jp/~yasuoka/publications/2018-12-01.pdf), 日本漢字学会第1回研究大会予稿集 (2018年12月1日), pp.33-48.
 
