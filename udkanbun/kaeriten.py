@@ -22,7 +22,7 @@ def kaeriten(ud,matrix=False):
       t[i].append((h[i],3))
 # rule 4
   for i in range(1,w):
-    if (ud[i].deprel=="ccomp" or ud[i].deprel=="xcomp") and h[i]<i:
+    if (ud[i].deprel=="ccomp" or ud[i].deprel=="xcomp" or ud[i].deprel=="advcl") and h[i]<i:
       t[i].append((h[i],4))
 # rule 5
   for i in range(1,w):
