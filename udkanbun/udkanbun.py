@@ -178,7 +178,9 @@ class UDKanbun(object):
     if self.mecab:
       u=""
       id=1
-      for s in sentence.split("\n"):
+      for s in sentence.replace("\u3001","\u3001\n").replace("\u3002","\u3002\n").split("\n"):
+        if s=="":
+          continue
         m=self.mecab.parse(s)
         u+="# text = "+s+"\n"
         for w in m.split("\n"):
