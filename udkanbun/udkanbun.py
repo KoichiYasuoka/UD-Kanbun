@@ -168,7 +168,10 @@ class UDKanbun(object):
     m=ufal.udpipe.Model.load(os.path.join(PACKAGE_DIR,"ud-kanbun.udpipe"))
     self.model=m
     if mecab:
-      import MeCab
+      try:
+        import fugashi as MeCab
+      except:
+        import MeCab
       self.mecab=MeCab.Tagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
       self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
     else:
