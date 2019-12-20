@@ -3,9 +3,15 @@ with open("README.md","r") as r:
   long_description=r.read()
 URL="https://github.com/KoichiYasuoka/UD-Kanbun"
 
+import subprocess
+install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996"]
+try:
+  d=subprocess.check_output(["mecab-config","--libs-only-L"])
+  install_requires=["ufal.udpipe>=1.2.0","fugashi>=0.1.6"]
+
 setuptools.setup(
   name="udkanbun",
-  version="1.5.3",
+  version="1.5.3.1",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
@@ -15,7 +21,7 @@ setuptools.setup(
   license="MIT",
   keywords="udpipe mecab nlp",
   packages=setuptools.find_packages(),
-  install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996"],
+  install_requires=install_requires,
   python_requires=">=3.6",
   package_data={
     "udkanbun":["./*.js","./ud-kanbun.udpipe","./mecab-kanbun/*"],
