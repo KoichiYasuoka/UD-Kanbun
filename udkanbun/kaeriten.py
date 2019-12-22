@@ -187,22 +187,20 @@ def kaeriten(ud,matrix=False):
     t[k].extend(t[j])
     t[j]=[]
 # rule 22
-  for i in reversed(range(1,w)):
-    j=h[i]
-    if j>i:
-      continue
-    d=ud[i].deprel
-    if d=="conj" or d=="clf" or d=="flat" or d=="case":
-      t[i].extend(t[j])
-      t[j]=[]
-  for i in reversed(range(1,w)):
-    j=h[i]
-    if j>i:
-      continue
-    d=ud[i].deprel
-    if d=="conj" or d=="clf" or d=="flat" or d=="case":
-      t[i].extend(t[j])
-      t[j]=[]
+  for x in range(2):
+    for i in reversed(range(1,w)):
+      j=h[i]
+      if j>i:
+        continue
+      d=ud[i].deprel
+      if d=="clf" or d=="flat" or d=="case":
+        t[i].extend(t[j])
+        t[j]=[]
+      elif d=="conj":
+        for a,b in t[j]:
+          if b!=8:
+            t[i].append((a,b))
+            t[j].remove((a,b))
 # rule 23
   p=[]
   for i in range(w):
