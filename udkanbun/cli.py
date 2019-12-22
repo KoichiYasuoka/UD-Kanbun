@@ -4,7 +4,7 @@ from udkanbun import UDKanbun
 def main():
   argc=len(sys.argv)
   i=w=1
-  optu=optt=optk=False
+  optu=optt=optk=opts=False
   while i<argc:
     o=sys.argv[i]
     if o=="-h" or o=="--help" or o=="-v" or o=="--version":
@@ -19,18 +19,20 @@ def main():
       w=2
     elif o=="-k":
       optk=True
+    elif o=="-s":
+      opts=True
     else:
       break
     i+=1
   else:
-    lzh=UDKanbun(True,False)
+    lzh=UDKanbun(True,opts)
     while True:
       try:
         s=input()
       except:
         return
       print(output(lzh,optu,optt,optk,w,s),end="")
-  lzh=UDKanbun(True,False)
+  lzh=UDKanbun(True,opts)
   while i<argc:
     f=open(sys.argv[i],"r",encoding="utf-8")
     s=f.read()
@@ -67,10 +69,11 @@ def output(lzh,optu,optt,optk,width,sentence):
 def usage():
   from pkg_resources import get_distribution
   print("UD-Kanbun Version "+get_distribution("udkanbun").version,file=sys.stderr)
-  print("Usage: udkanbun [-u|-t|-t2|-k] file",file=sys.stderr)
+  print("Usage: udkanbun [-u|-t|-t2|-s|-k] file",file=sys.stderr)
   print("  output format:",file=sys.stderr)
   print("    -u  Universal Dependencies CoNLL-U",file=sys.stderr)
   print("    -t  tree  (-t2  tree with BoxDrawingWidth=2)",file=sys.stderr)
+  print("    -s  sentence segmentation",file=sys.stderr)
   print("    -k  kaeriten",file=sys.stderr)
   sys.exit()
 
