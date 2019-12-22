@@ -163,7 +163,7 @@ class UDKanbunEntry(UDPipeEntry):
     return s
 
 class UDKanbun(object):
-  def __init__(self,mecab):
+  def __init__(self,mecab,danku):
     import ufal.udpipe
     m=ufal.udpipe.Model.load(os.path.join(PACKAGE_DIR,"ud-kanbun.udpipe"))
     self.model=m
@@ -176,7 +176,10 @@ class UDKanbun(object):
       self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
     else:
       self.mecab=False
-      self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=presegmented","","","")
+      if danku:
+        self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=joint_with_parsing","","","")
+      else:
+        self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=presegmented","","","")
   def __call__(self,sentence,raw=False):
     if self.mecab:
       u=""
@@ -204,6 +207,6 @@ class UDKanbun(object):
     else:
       return UDKanbunEntry(self.udpipe.process(u))
 
-def load(MeCab=True):
-  return UDKanbun(MeCab)
+def load(MeCab=True,Danku=False):
+  return UDKanbun(MeCab,Danku)
 
