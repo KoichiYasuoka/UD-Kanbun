@@ -184,7 +184,7 @@ class UDKanbun(object):
   def __call__(self,sentence,raw=False):
     if self.mecab:
       if self.danku==False:
-        p=sentence.replace("\u3001","\u3001\n").replace("\u3002","\u3002\n").split("\n")
+        p=sentence.replace("\u3001","\u3001\n").replace("\u3002","\u3002\n")
       elif self.danku==True:
         import udkanbun.danku
         try:
