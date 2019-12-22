@@ -12,7 +12,7 @@ except:
 
 setuptools.setup(
   name="udkanbun",
-  version="1.5.6",
+  version="1.5.7",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
