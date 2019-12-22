@@ -174,6 +174,7 @@ class UDKanbun(object):
         import MeCab
       self.mecab=MeCab.Tagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
       self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
+      self.danku=danku
     else:
       self.mecab=False
       if danku:
@@ -182,9 +183,21 @@ class UDKanbun(object):
         self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=presegmented","","","")
   def __call__(self,sentence,raw=False):
     if self.mecab:
+      if self.danku==False:
+        p=sentence.replace("\u3001","\u3001\n").replace("\u3002","\u3002\n").split("\n")
+      elif self.danku==True:
+        import udkanbun.danku
+        try:
+          self.danku=udkanbun.danku.SegShenShen()
+          p=self.danku(sentence)
+        except:
+          self.danku=udkanbun.danku.SegUDKanbun()
+          p=self.danku(sentence)
+      else:
+        p=self.danku(sentence)
       u=""
       id=1
-      for s in sentence.replace("\u3001","\u3001\n").replace("\u3002","\u3002\n").split("\n"):
+      for s in p.split("\n"):
         if s=="":
           continue
         m=self.mecab.parse(s)
