@@ -5,14 +5,19 @@ URL="https://github.com/KoichiYasuoka/UD-Kanbun"
 
 import subprocess
 try:
+  d=subprocess.check_output(["swig","-version"])
+  install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.3"]
+except:
+  install_requires=["ufal.udpipe>=1.2.0","mecab-python3==0.996.2"]
+try:
   d=subprocess.check_output(["mecab-config","--libs-only-L"])
   install_requires=["ufal.udpipe>=1.2.0","fugashi>=0.1.6"]
 except:
-  install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996"]
+  pass
 
 setuptools.setup(
   name="udkanbun",
-  version="1.6.0",
+  version="1.6.1",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
