@@ -172,7 +172,10 @@ class UDKanbun(object):
         import fugashi as MeCab
       except:
         import MeCab
-      self.mecab=MeCab.Tagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
+      try:
+        self.mecab=MeCab.Tagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
+      except:
+        self.mecab=MeCab.GenericTagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
       self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
       self.danku=danku
     else:
