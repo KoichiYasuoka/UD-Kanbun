@@ -13,15 +13,16 @@ except:
 if useFugashi:
   install_requires=["ufal.udpipe>=1.2.0","fugashi>=0.1.8"]
 else:
-  try:
-    d=subprocess.check_output(["swig","-version"])
-    install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.3"]
-  except:
+  import platform
+  from pkg_resources import get_distribution
+  if platform.platform().startswith("Linux") and int(get_distribution("pip").version.split(".")[0])<19:
     install_requires=["ufal.udpipe>=1.2.0","mecab-python3==0.996.2"]
+  else:
+    install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.3"]
 
 setuptools.setup(
   name="udkanbun",
-  version="1.6.4",
+  version="1.6.5",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
