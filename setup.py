@@ -2,7 +2,7 @@ import setuptools
 import subprocess
 import os
 
-with open("README.md","r") as r:
+with open("README.md","r",encoding="utf-8") as r:
   long_description=r.read()
 URL="https://github.com/KoichiYasuoka/UD-Kanbun"
 
@@ -23,7 +23,7 @@ else:
 
 setuptools.setup(
   name="udkanbun",
-  version="1.6.6",
+  version="1.6.7",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
