@@ -1,5 +1,6 @@
 import setuptools
 import subprocess
+import os
 
 with open("README.md","r") as r:
   long_description=r.read()
@@ -9,9 +10,9 @@ try:
   d=subprocess.check_output(["mecab-config","--libs-only-L"])
   useFugashi=True
 except:
-  useFugashi=False
+  useFugashi=(os.name=="nt")
 if useFugashi:
-  install_requires=["ufal.udpipe>=1.2.0","fugashi>=0.1.8"]
+  install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=0.1.8"]
 else:
   import platform
   from pkg_resources import get_distribution
@@ -22,7 +23,7 @@ else:
 
 setuptools.setup(
   name="udkanbun",
-  version="1.6.5",
+  version="1.6.6",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
