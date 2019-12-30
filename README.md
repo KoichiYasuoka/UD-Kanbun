@@ -59,14 +59,13 @@ Tar-ball is available for Linux, and is installed by default when you use `pip`:
 pip install udkanbun
 ```
 
-## Installation for Cygwin64
+## Installation for Cygwin
 
-For installing in [Cygwin64](https://www.cygwin.com/install.html), make sure to get `gcc-g++` `git` `python37-pip` `python37-devel` `python37-cython` packages, and then:
+Make sure to get `gcc-g++` `python37-pip` `python37-devel` packages, and then:
 ```sh
-pip3.7 install git+https://github.com/KoichiYasuoka/mecab-cygwin64
 pip3.7 install udkanbun
 ```
-Use `python3.7` command in Cygwin64 instead of `python`. For installing in old Cygwin (32-bit), try to use [mecab-cygwin32](https://github.com/KoichiYasuoka/mecab-cygwin32) instead of [mecab-cygwin64](https://github.com/KoichiYasuoka/mecab-cygwin64).
+Use `python3.7` command in [Cygwin](https://www.cygwin.com/install.html) instead of `python`.
 
 ## Installation for Jupyter Notebook (Google Colaboratory)
 
