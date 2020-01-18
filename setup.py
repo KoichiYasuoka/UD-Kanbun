@@ -28,7 +28,7 @@ else:
 
 setuptools.setup(
   name="udkanbun",
-  version="1.7.5",
+  version="1.7.6",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
