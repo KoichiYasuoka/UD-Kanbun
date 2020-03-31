@@ -29,14 +29,14 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 不㆑入㆓虎穴㆒不㆑得㆓虎子㆒
 
 >>> print(s.to_tree())
-不 <┐     advmod
-入 ─┴─┬─┐ root
-虎 <┐ │ │ nmod
-穴 ─┘<┘ │ obj
-不 <┐   │ advmod
-得 ─┴─┐<┘ parataxis
-虎 <┐ │   nmod
-子 ─┘<┘   obj
+不 <╗     advmod
+入 ═╩═╦═╗ root
+虎 <╗ ║ ║ nmod
+穴 ═╝<╝ ║ obj
+不 <╗   ║ advmod
+得 ═╩═╗<╝ parataxis
+虎 <╗ ║   nmod
+子 ═╝<╝   obj
 
 >>> f=open("trial.svg","w")
 >>> f.write(s.to_svg())

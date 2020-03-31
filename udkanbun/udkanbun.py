@@ -127,7 +127,7 @@ class UDKanbunEntry(UDPipeEntry):
       k=udkanbun.kaeriten.kaeriten(self)
     else:
       k=[[]]*len(self)
-    u=[" ","\u2574","\u2576","\u2500","\u2575","\u2518","\u2514","\u2534","\u2577","\u2510","\u250C","\u252C","\u2502","\u2524","\u251C","\u253C","<"]
+    u=[" ","\u2578","\u257A","\u2550","\u2579","\u255D","\u255A","\u2569","\u257B","\u2557","\u2554","\u2566","\u2551","\u2563","\u2560","\u256C","<"]
     if Japanese:
       import udkanbun.deprelja
       r=udkanbun.deprelja.deprelja
