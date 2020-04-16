@@ -11,20 +11,20 @@ if pl.startswith("CYGWIN"):
   install_requires=["ufal.udpipe>=1.2.0","mecab-cygwin>=0.5.0"]
 else:
   import sys
-  useFugashi=(sys.version_info.major==3)and(sys.version_info.minor>6)
+  useFugashi=(sys.version_info.major==3)and(sys.version_info.minor>4)
   try:
     d=subprocess.check_output(["mecab-config","--libs-only-L"])
   except:
     import os
     useFugashi&=(os.name=="nt")
   if useFugashi:
-    install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=0.1.8"]
+    install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=0.1.12"]
   else:
     install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.5"]
 
 setuptools.setup(
   name="udkanbun",
-  version="2.0.2",
+  version="2.0.3",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
