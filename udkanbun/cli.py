@@ -25,14 +25,14 @@ def main():
       break
     i+=1
   else:
-    lzh=UDKanbun(True,opts)
+    lzh=UDKanbun(True,opts,None)
     while True:
       try:
         s=input()
       except:
         return
       print(output(lzh,optu,optt,optk,w,s),end="")
-  lzh=UDKanbun(True,opts)
+  lzh=UDKanbun(True,opts,None)
   while i<argc:
     f=open(sys.argv[i],"r",encoding="utf-8")
     s=f.read()
