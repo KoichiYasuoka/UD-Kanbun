@@ -163,9 +163,12 @@ class UDKanbunEntry(UDPipeEntry):
     return s
 
 class UDKanbun(object):
-  def __init__(self,mecab,danku):
+  def __init__(self,mecab,danku,model):
     import ufal.udpipe
-    m=ufal.udpipe.Model.load(os.path.join(PACKAGE_DIR,"ud-kanbun.udpipe"))
+    if model==None:
+      m=ufal.udpipe.Model.load(os.path.join(PACKAGE_DIR,"ud-kanbun.udpipe"))
+    else:
+      m=ufal.udpipe.Model.load(model)
     self.model=m
     if mecab:
       try:
@@ -174,13 +177,13 @@ class UDKanbun(object):
         from fugashi import GenericTagger as Tagger
       self.mecab=Tagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
       self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
-      self.danku=danku
     else:
       self.mecab=False
       if danku:
         self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=joint_with_parsing","","","")
       else:
         self.udpipe=ufal.udpipe.Pipeline(m,"tokenizer=presegmented","","","")
+    self.danku=danku
   def __call__(self,sentence,raw=False):
     if self.mecab:
       if self.danku==False:
@@ -213,6 +216,8 @@ class UDKanbun(object):
             misc="SpaceAfter=No" if t[9]=="*" else "Gloss="+t[9]+"|SpaceAfter=No"
             u+="\t".join([str(id),s[0],lemma,t[7],t[0]+","+t[1]+","+t[2]+","+t[3],t[8].replace("*","_"),"_","_","_",misc])+"\n"
             id+=1
+    elif self.danku==False:
+      u=sentence.replace("\u3002","\u3002\n").replace("\uFF0E","\uFF0E\n").replace(".",".\n")
     else:
       u=sentence
     if raw:
@@ -221,5 +226,5 @@ class UDKanbun(object):
       return UDKanbunEntry(self.udpipe.process(u))
 
 def load(MeCab=True,Danku=False):
-  return UDKanbun(MeCab,Danku)
+  return UDKanbun(MeCab,Danku,None)
 
