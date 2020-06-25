@@ -81,47 +81,10 @@ class UDKanbunEntry(UDPipeEntry):
     s="".join("\n"+self[i].form+k[i] if self[i].id==1 else self[i].form+k[i] for i in range(1,len(self))).strip()
     return s+"\n"
   def to_tree(self,BoxDrawingWidth=1,kaeriten=False,Japanese=False):
+    import deplacy
     if not hasattr(self,"_tokens"):
       return None
-    f=[[] for i in range(len(self))]
-    h=[0]
-    for i in range(1,len(self)):
-      if self[i].deprel=="root":
-        h.append(0)
-        continue
-      j=i+self[i].head.id-self[i].id
-      f[j].append(i)
-      h.append(j) 
-    d=[1 if f[i]==[] and abs(h[i]-i)==1 else -1 if h[i]==0 else 0 for i in range(len(self))]
-    while 0 in d:
-      for i,e in enumerate(d):
-        if e!=0:
-          continue
-        g=[d[j] for j in f[i]]
-        if 0 in g:
-          continue
-        k=h[i]
-        if 0 in [d[j] for j in range(min(i,k)+1,max(i,k))]:
-          continue
-        for j in range(min(i,k)+1,max(i,k)):
-          if j in f[i]:
-            continue
-          g.append(d[j]-1 if j in f[k] else d[j])
-        g.append(0)
-        d[i]=max(g)+1
-    m=max(d)
-    p=[[0]*(m*2) for i in range(len(self))]
-    for i in range(1,len(self)):
-      k=h[i]
-      if k==0:
-        continue
-      j=d[i]*2-1
-      p[min(i,k)][j]|=9
-      p[max(i,k)][j]|=5
-      for l in range(j):
-        p[k][l]|=3
-      for l in range(min(i,k)+1,max(i,k)):
-        p[l][j]|=12
+    p=deplacy.renderMatrix(self,False)
     if kaeriten:
       import udkanbun.kaeriten
       k=udkanbun.kaeriten.kaeriten(self)
@@ -135,17 +98,9 @@ class UDKanbunEntry(UDPipeEntry):
       r={}
     s=""
     for i in range(1,len(self)):
-      if h[i]>0:
-        j=d[i]*2-2
-        while j>=0:
-          if p[i][j]>0:
-            break
-          p[i][j]|=3
-          j-=1
-        p[i][j+1]=16
       w=self[i].form[0]
       w="  " if w=="_" else w
-      t="".join(u[j] for j in p[i])
+      t="".join(u[j] for j in p[i-1])
       if BoxDrawingWidth>1:
         t=t.replace(" "," "*BoxDrawingWidth).replace("<"," "*(BoxDrawingWidth-1)+"<")
       if self[i].deprel in r:
@@ -153,7 +108,7 @@ class UDKanbunEntry(UDPipeEntry):
       else:
         s+=w+" "+t+" "+self[i].deprel+"\n"
       if len(self[i].form)>1 or k[i]!=[]:
-        t="".join(u[((j&8)>>1)*3] for j in p[i])
+        t="".join(u[((j&8)>>1)*3] for j in p[i-1])
         if BoxDrawingWidth>1:
           t=t.replace(" "," "*BoxDrawingWidth)
         for w in self[i].form[1:]:
