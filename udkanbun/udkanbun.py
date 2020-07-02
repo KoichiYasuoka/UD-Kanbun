@@ -80,17 +80,21 @@ class UDKanbunEntry(UDPipeEntry):
     k=udkanbun.kaeriten.kaeriten(self)
     s="".join("\n"+self[i].form+k[i] if self[i].id==1 else self[i].form+k[i] for i in range(1,len(self))).strip()
     return s+"\n"
-  def to_tree(self,BoxDrawingWidth=1,kaeriten=False,Japanese=False):
+  def to_tree(self,BoxDrawingWidth=1,kaeriten=False,Japanese=False,CatenaAnalysis=True):
     import deplacy
     if not hasattr(self,"_tokens"):
       return None
-    p=deplacy.renderMatrix(self,False)
+    p=deplacy.renderMatrix(self,CatenaAnalysis)
     if kaeriten:
       import udkanbun.kaeriten
       k=udkanbun.kaeriten.kaeriten(self)
     else:
       k=[[]]*len(self)
     u=[" ","\u2578","\u257A","\u2550","\u2579","\u255D","\u255A","\u2569","\u257B","\u2557","\u2554","\u2566","\u2551","\u2563","\u2560","\u256C","<"]
+    if CatenaAnalysis:
+      u[7]=u[5]
+      u[11]=u[9]
+      u[15]=u[12]
     if Japanese:
       import udkanbun.deprelja
       r=udkanbun.deprelja.deprelja
