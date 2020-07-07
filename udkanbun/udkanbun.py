@@ -134,7 +134,7 @@ class UDKanbun(object):
         from MeCab import Tagger
       except:
         from fugashi import GenericTagger as Tagger
-      self.mecab=Tagger("-d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
+      self.mecab=Tagger("-r "+os.path.join(PACKAGE_DIR,"mecabrc")+" -d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
       self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
     else:
       self.mecab=False
