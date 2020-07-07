@@ -24,7 +24,7 @@ else:
 
 setuptools.setup(
   name="udkanbun",
-  version="2.2.1",
+  version="2.2.2",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
@@ -37,7 +37,7 @@ setuptools.setup(
   install_requires=install_requires,
   python_requires=">=3.6",
   package_data={
-    "udkanbun":["./*.js","./ud-kanbun.udpipe","./mecab-kanbun/*"],
+    "udkanbun":["./mecabrc","./*.js","./ud-kanbun.udpipe","./mecab-kanbun/*"],
   },
   entry_points={
     "console_scripts":["udkanbun=udkanbun.cli:main"],
