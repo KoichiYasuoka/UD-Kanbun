@@ -96,8 +96,8 @@ class UDKanbunEntry(UDPipeEntry):
       u[11]=u[9]
       u[15]=u[12]
     if Japanese:
-      import udkanbun.deprelja
-      r=udkanbun.deprelja.deprelja
+      import deplacy.deprelja
+      r=deplacy.deprelja.deprelja
     else:
       r={}
     s=""
