@@ -2101,6 +2101,7 @@
 春,17,17,8810,n,名詞,人,名,*,*,春,PROPN,NameType=Giv,[given-name]
 春,44,44,4717,n,名詞,時,*,*,*,春,NOUN,Case=Tem,spring
 春秋,12,12,5477,n,名詞,主体,書物,*,*,春秋,NOUN,*,[book-name]
+昨,44,44,4971,n,名詞,時,*,*,*,昨,NOUN,Case=Tem,yesterday
 昭,15,15,7054,n,名詞,人,その他の人名,*,*,昭,PROPN,NameType=Prs,Zhao
 昭,34,34,6486,n,名詞,固定物,関係,*,*,昭,NOUN,Case=Loc,left-hand-of-temple
 昭,108,108,5165,v,動詞,描写,形質,*,*,昭,VERB,Degree=Pos,bright
@@ -3041,6 +3042,7 @@
 眸,9,9,4849,n,名詞,不可譲,身体,*,*,眸,NOUN,*,pupil-of-eye
 眸子,9,9,4824,n,名詞,不可譲,身体,*,*,眸子,NOUN,*,pupil-of-eye
 眼,9,9,4837,n,名詞,不可譲,身体,*,*,眼,NOUN,*,eye
+着,116,116,4733,v,動詞,行為,動作,*,*,着,VERB,*,wear
 睊,116,116,4733,v,動詞,行為,動作,*,*,睊,VERB,*,glance
 睟,109,109,4853,v,動詞,描写,態度,*,*,睟,VERB,Degree=Pos,candid
 督,111,111,4907,v,動詞,行為,交流,*,*,督,VERB,*,oversee
@@ -5323,6 +5325,7 @@
 者,57,57,5640,p,助詞,提示,*,*,*,者,PART,*,that-which
 臭,41,41,4783,n,名詞,描写,形質,*,*,臭,NOUN,*,smell
 臭,108,108,5816,v,動詞,描写,形質,*,*,臭,VERB,Degree=Pos,malodorous
+着,108,108,3554,v,動詞,描写,形質,*,*,著,VERB,Degree=Pos,appear
 著,108,108,3554,v,動詞,描写,形質,*,*,著,VERB,Degree=Pos,appear
 著,108,108,3554,v,動詞,描写,形質,*,*,著,VERB,Degree=Pos,appear
 褐,28,28,5324,n,名詞,可搬,道具,*,*,褐,NOUN,*,coarse-clothing
