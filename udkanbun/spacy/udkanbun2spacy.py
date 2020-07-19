@@ -15,7 +15,7 @@ class UDKanbunLanguage(Language):
     self.vocab=self.Defaults.create_vocab()
     self.tokenizer=UDKanbunTokenizer(MeCab,Danku,self.vocab)
     self.pipeline=[]
-    self._meta = {
+    self._meta={
       "author":"Koichi Yasuoka",
       "description":"derived from UD-Kanbun",
       "lang":"UD_Kanbun_lzh",
