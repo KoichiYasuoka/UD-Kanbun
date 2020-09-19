@@ -68,7 +68,8 @@ class UDPipeEntry(object):
       for j in takewhile(lambda j:j-self[j].id==i,range(i+1,len(self))):
         s+=str(self[j])+'\n'
     s+='</text>\n<script type="text/javascript"><![CDATA[\n'
-    f=open(os.path.join(PACKAGE_DIR,"conllusvgview.js"),"r")
+    import deplacy
+    f=open(os.path.join(deplacy.PACKAGE_DIR,"conllusvgview.js"),"r",encoding="utf-8")
     s+=f.read()
     f.close()
     s+=']]></script>\n</svg>\n'
