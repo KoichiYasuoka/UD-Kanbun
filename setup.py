@@ -37,7 +37,7 @@ setuptools.setup(
   install_requires=install_requires,
   python_requires=">=3.6",
   package_data={
-    "udkanbun":["./mecabrc","./*.js","./ud-kanbun.udpipe","./mecab-kanbun/*"],
+    "udkanbun":["./mecabrc","./ud-kanbun.udpipe","./mecab-kanbun/*"],
   },
   entry_points={
     "console_scripts":["udkanbun=udkanbun.cli:main"],
