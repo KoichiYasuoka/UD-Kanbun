@@ -27,12 +27,12 @@ class SegShenShen(object):
     p=paragraph.replace("\n","")
     s=""
     while p>"":
-      d='text={"text":"'+quote(p)+'"}&seg=quan'
+      d='text={"text":"'+quote(p)+'"}&seg=duanju'
       u=req.Request(self.apiURL,d.encode(),self.header)
-      r=req.urlopen(u)
-      q=r.read()
-      r.close()
-      q=re.sub(r'<span[^>]*> [^ ]+ </span>',"\n",q.decode("utf-8"))
+      with req.urlopen(u) as r:
+        q=r.read()
+      q=re.sub(r'<span class="tags0"> [^ ]+ </span>',"\n",q.decode("utf-8"))
+      q=re.sub(r'<[^>]+>',"",q)
       q=q if type(q) is str else q.encode("utf-8")
       if len(p)==len(q.replace("\n","")):
         s+=q
