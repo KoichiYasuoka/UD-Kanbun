@@ -12,9 +12,15 @@ class UDKanbunLanguage(Language):
   max_length=10**6
   def __init__(self,MeCab,Danku):
     self.Defaults.lex_attr_getters[LANG]=lambda _text:"lzh"
-    self.vocab=self.Defaults.create_vocab()
+    try:
+      self.vocab=self.Defaults.create_vocab()
+      self.pipeline=[]
+    except:
+      from spacy.vocab import create_vocab
+      self.vocab=create_vocab("lzh",self.Defaults)
+      self._components=[]
+      self._disabled=set()
     self.tokenizer=UDKanbunTokenizer(MeCab,Danku,self.vocab)
-    self.pipeline=[]
     self._meta={
       "author":"Koichi Yasuoka",
       "description":"derived from UD-Kanbun",
@@ -44,6 +50,7 @@ class UDKanbunTokenizer(object):
     lemmas=[]
     pos=[]
     tags=[]
+    feats=[]
     heads=[]
     deps=[]
     spaces=[]
@@ -54,11 +61,12 @@ class UDKanbunTokenizer(object):
       s=t.split("\t")
       if len(s)!=10:
         continue
-      id,form,lemma,upos,xpos,dummy_feats,head,deprel,dummy_deps,misc=s
+      id,form,lemma,upos,xpos,feat,head,deprel,dummy_deps,misc=s
       words.append(form)
       lemmas.append(vs.add(lemma))
       pos.append(vs.add(upos))
       tags.append(vs.add(xpos))
+      feats.append(feat)
       if deprel=="root":
         heads.append(0)
         deps.append(r)
@@ -75,8 +83,13 @@ class UDKanbunTokenizer(object):
     doc=Doc(self.vocab,words=words,spaces=spaces)
     a=numpy.array(list(zip(lemmas,pos,tags,deps,heads,norms)),dtype="uint64")
     doc.from_array([LEMMA,POS,TAG,DEP,HEAD,NORM],a)
-    doc.is_tagged=True
-    doc.is_parsed=True
+    try:
+      doc.is_tagged=True
+      doc.is_parsed=True
+    except:
+      for i,j in enumerate(feats):
+        if j!="_" and j!="":
+          doc[i].set_morph(j)
     return doc
 
 def load(MeCab=True,Danku=False):
