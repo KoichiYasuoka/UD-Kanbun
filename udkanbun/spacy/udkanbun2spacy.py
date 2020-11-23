@@ -108,7 +108,7 @@ def to_conllu(item,offset=1):
         m=m.replace("|_","")
     try:
       f=str(item.morph)
-      if f.startswith("<spacy"):
+      if f.startswith("<spacy") or f=="":
         f="_"
     except:
       f="_"
