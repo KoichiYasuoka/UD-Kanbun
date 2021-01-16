@@ -173,7 +173,12 @@ class UDKanbun(object):
             s=w.split("\t")
             t=s[1].split(",")
             lemma=s[0] if t[6]=="*" else t[6]
-            translit=lemma if t[5]=="*" else t[5]
+            i=lemma.find("/")
+            if i>0:
+              translit=lemma[i+1:]
+              lemma=lemma[0:i]
+            else:
+              translit=lemma
             misc="SpaceAfter=No" if t[9]=="*" else "Gloss="+t[9]+"|SpaceAfter=No"
             if translit!=s[0]:
               misc+="|Translit="+translit
