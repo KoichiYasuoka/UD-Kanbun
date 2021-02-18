@@ -201,5 +201,7 @@ class UDKanbun(object):
       return UDKanbunEntry(self.udpipe.process(u))
 
 def load(MeCab=True,Danku=False,BERT=None):
-  return UDKanbun(MeCab,Danku,BERT)
+  if BERT in {"guwencombo-base","guwencombo-large"}:
+    return UDKanbun(MeCab,Danku,BERT)
+  return UDKanbun(MeCab,Danku,None)
 
