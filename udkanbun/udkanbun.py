@@ -127,6 +127,9 @@ class UDKanbun(object):
     import ufal.udpipe
     if model==None:
       m=ufal.udpipe.Model.load(os.path.join(PACKAGE_DIR,"ud-kanbun.udpipe"))
+    elif model.startswith("guwenbert-"):
+      m=model+".supar"
+      mecab=True
     else:
       m=ufal.udpipe.Model.load(model)
     self.model=m
@@ -136,7 +139,11 @@ class UDKanbun(object):
       except:
         from fugashi import GenericTagger as Tagger
       self.mecab=Tagger("-r "+os.path.join(PACKAGE_DIR,"mecabrc")+" -d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
-      self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
+      if model.startswith("guwenbert-"):
+        import udkanbun.supar
+        self.udpipe=udkanbun.supar.SuParAPI(self.model)
+      else:
+        self.udpipe=ufal.udpipe.Pipeline(m,"conllu","none","","")
     else:
       self.mecab=False
       if danku:
@@ -193,6 +200,6 @@ class UDKanbun(object):
     else:
       return UDKanbunEntry(self.udpipe.process(u))
 
-def load(MeCab=True,Danku=False):
-  return UDKanbun(MeCab,Danku,None)
+def load(MeCab=True,Danku=False,BERT=None):
+  return UDKanbun(MeCab,Danku,BERT)
 
