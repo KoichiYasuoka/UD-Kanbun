@@ -125,11 +125,12 @@ class UDKanbunEntry(UDPipeEntry):
 class UDKanbun(object):
   def __init__(self,mecab,danku,model):
     import ufal.udpipe
+    supar=False
     if model==None:
       m=ufal.udpipe.Model.load(os.path.join(PACKAGE_DIR,"ud-kanbun.udpipe"))
     elif model.startswith("guwenbert-"):
       m=model+".supar"
-      mecab=True
+      mecab=supar=True
     else:
       m=ufal.udpipe.Model.load(model)
     self.model=m
@@ -139,7 +140,7 @@ class UDKanbun(object):
       except:
         from fugashi import GenericTagger as Tagger
       self.mecab=Tagger("-r "+os.path.join(PACKAGE_DIR,"mecabrc")+" -d "+os.path.join(PACKAGE_DIR,"mecab-kanbun"))
-      if model.startswith("guwenbert-"):
+      if supar:
         import udkanbun.supar
         self.udpipe=udkanbun.supar.SuParAPI(self.model)
       else:
