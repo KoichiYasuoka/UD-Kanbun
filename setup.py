@@ -18,13 +18,13 @@ else:
     import os
     useFugashi&=(os.name=="nt")
   if useFugashi:
-    install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=1.1.0","deplacy>=1.9.1"]
+    install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=1.0.5","deplacy>=1.9.1"]
   else:
     install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.5","deplacy>=1.9.1"]
 
 setuptools.setup(
   name="udkanbun",
-  version="2.7.4",
+  version="2.7.5",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
@@ -37,7 +37,7 @@ setuptools.setup(
   install_requires=install_requires,
   python_requires=">=3.6",
   package_data={
-    "udkanbun":["./mecabrc","./ud-kanbun.udpipe","./mecab-kanbun/*"],
+    "udkanbun":["./mecabrc","./ud-kanbun.udpipe","./mecab-kanbun/*","./supar-kanbun/filesize.txt"],
   },
   entry_points={
     "console_scripts":["udkanbun=udkanbun.cli:main"],
