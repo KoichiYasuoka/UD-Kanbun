@@ -19,11 +19,9 @@ class SuParAPI(object):
     f=os.path.join(DOWNLOAD_DIR,model)
     try:
       s=os.path.getsize(f)
-      if filesize[model]!=s:
-        s=-1
     except:
       s=-1
-    if s<0:
+    if filesize[model]!=s:
       from udkanbun.download import download
       download(MODEL_URL,model,DOWNLOAD_DIR)
     self.supar=Parser.load(f)
