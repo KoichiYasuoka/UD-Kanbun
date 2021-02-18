@@ -37,7 +37,7 @@ setuptools.setup(
   install_requires=install_requires,
   python_requires=">=3.6",
   package_data={
-    "udkanbun":["./mecabrc","./ud-kanbun.udpipe","./mecab-kanbun/*","./supar-kanbun/filesize.txt"],
+    "udkanbun":["mecabrc","ud-kanbun.udpipe","mecab-kanbun/*","supar-kanbun/*.txt"],
   },
   entry_points={
     "console_scripts":["udkanbun=udkanbun.cli:main"],
