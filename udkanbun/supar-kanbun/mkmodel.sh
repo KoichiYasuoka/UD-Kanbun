@@ -64,7 +64,6 @@ BEGIN{
         python3 -m supar.cmds.biaffine_dependency train -b -d 0 -p ./$M.supar --epochs=1000 -f bert --bert ethanyt/$M --train train.conllu --dev dev.conllu --test test.conllu --embed=''
         split -a 2 -b 83886080 --numeric-suffixes=01 $M.supar $M.supar.
         ls -1 $M.supar.0[1-9] | sed 's/^\(.*\)0\([1-9]\)$/mv & \1\2/' | sh
-done
    fi
 done
 ls -ltr *.supar | awk '{printf("%s %d\n",$NF,$5)}' > filesize.txt
