@@ -7,7 +7,7 @@ fi
 for M
 do if [ -s $M.supar ]
    then continue
-   elfi [ -s $M.supar.10 ]
+   elif [ -s $M.supar.10 ]
    then cat $M.supar.[1-9] $M.supar.[1-9][0-9] > $M.supar
    elif [ -s $M.supar.1 ]
    then cat $M.supar.[1-9] > $M.supar
