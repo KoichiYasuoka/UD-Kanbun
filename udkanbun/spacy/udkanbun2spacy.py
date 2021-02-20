@@ -106,6 +106,9 @@ def to_conllu(item,offset=1):
       if item.norm_!=item.orth_:
         m="Gloss="+item.norm_+"|"+m
         m=m.replace("|_","")
+    l=item.lemma_
+    if l=="":
+      l="_"
     t=item.tag_
     if t=="":
       t="_"
@@ -115,6 +118,6 @@ def to_conllu(item,offset=1):
         f="_"
     except:
       f="_"
-    return "\t".join([str(item.i+offset),item.orth_,item.lemma_,item.pos_,t,f,str(0 if item.head==item else item.head.i+offset),item.dep_.lower(),"_",m])
+    return "\t".join([str(item.i+offset),item.orth_,l,item.pos_,t,f,str(0 if item.head==item else item.head.i+offset),item.dep_.lower(),"_",m])
   return "".join(to_conllu(s)+"\n" for s in item)
 
