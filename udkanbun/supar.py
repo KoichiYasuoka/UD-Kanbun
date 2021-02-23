@@ -58,8 +58,8 @@ class SuParAPI(object):
         j=0
       else:
         t=s.split("\t")
-        t[6]=str(d.sentences[0].values[6][j])
-        t[7]=d.sentences[0].values[7][j]
+        t[6]=str(d.sentences[i].values[6][j])
+        t[7]=d.sentences[i].values[7][j]
         c[k]="\t".join(t)
         j+=1
     return "\n".join(c)
