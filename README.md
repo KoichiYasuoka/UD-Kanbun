@@ -43,7 +43,7 @@ Tokenizer, POS-Tagger, and Dependency-Parser for Classical Chinese Texts (漢文
 >>> f.close()
 ```
 ![trial.svg](https://raw.githubusercontent.com/KoichiYasuoka/UD-Kanbun/master/trial.png)
-`udkanbun.load()` has three options `udkanbun.load(MeCab=True,Danku=False,BERT=None)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing. With the option `Danku=True` the pipeline tries to segment sentences automatically. If you have already installed [SuPar](https://pypi.org/project/supar/) 1.0.1 or later, you can use BERT model with the option `BERT` shown below:
+`udkanbun.load()` has three options `udkanbun.load(MeCab=True,Danku=False,BERT=None)`.  By default, the UD-Kanbun pipeline uses [MeCab](https://taku910.github.io/mecab/) for tokenizer and POS-tagger, then uses [UDPipe](http://ufal.mff.cuni.cz/udpipe) for dependency-parser. With the option `MeCab=False` the pipeline uses UDPipe for all through the processing. With the option `Danku=True` the pipeline tries to segment sentences automatically. If you have already installed [SuPar](https://pypi.org/project/supar/) 1.0.0 or later, you can use BERT model with the option `BERT` shown below:
 * `BERT="guwenbert-base"` utilizes [ethanyt/guwenbert-base](https://huggingface.co/ethanyt/guwenbert-base)
 * `BERT="guwenbert-large"` utilizes [ethanyt/guwenbert-large](https://huggingface.co/ethanyt/guwenbert-large)
 
