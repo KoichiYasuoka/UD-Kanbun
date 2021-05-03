@@ -18,13 +18,13 @@ else:
     import os
     useFugashi&=(os.name=="nt")
   if useFugashi:
-    install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=1.0.5","deplacy>=1.9.6"]
+    install_requires=["ufal.udpipe>=1.2.0.3","fugashi>=1.0.5","deplacy>=1.9.7"]
   else:
-    install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.5","deplacy>=1.9.6"]
+    install_requires=["ufal.udpipe>=1.2.0","mecab-python3>=0.996.5","deplacy>=1.9.7"]
 
 setuptools.setup(
   name="udkanbun",
-  version="3.1.3",
+  version="3.1.4",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
