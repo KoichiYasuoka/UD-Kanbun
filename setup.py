@@ -8,7 +8,7 @@ URL="https://github.com/KoichiYasuoka/UD-Kanbun"
 
 pl=platform.platform()
 if pl.startswith("CYGWIN"):
-  install_requires=["ufal.udpipe>=1.2.0","mecab-cygwin>=0.5.0","deplacy>=1.9.6"]
+  install_requires=["ufal.udpipe>=1.2.0","mecab-cygwin>=0.5.0","deplacy>=1.9.7"]
 else:
   import sys
   useFugashi=(sys.version_info.major==3)and(sys.version_info.minor>4)
@@ -24,7 +24,7 @@ else:
 
 setuptools.setup(
   name="udkanbun",
-  version="3.1.4",
+  version="3.1.5",
   description="Tokenizer POS-tagger and Dependency-parser for Classical Chinese",
   long_description=long_description,
   long_description_content_type="text/markdown",
