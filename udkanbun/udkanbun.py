@@ -141,7 +141,7 @@ class UDKanbun(object):
         from fugashi import GenericTagger as Tagger
       r=os.path.join(PACKAGE_DIR,"mecabrc")
       d=os.path.join(PACKAGE_DIR,"mecab-kanbun")
-      self.mecab=Tagger(f"""-r "{r}" -d "{d}" """)
+      self.mecab=Tagger("-r "+r+" -d "+d)
       if supar:
         import udkanbun.supar
         self.udpipe=udkanbun.supar.SuParAPI(self.model)
